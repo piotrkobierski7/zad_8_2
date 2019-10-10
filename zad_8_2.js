@@ -33,10 +33,11 @@ function fTempIntoC(temperatureF){
 function showInfo(typeOfDegree, temperature){
 	var tempC;
 	if (!isNaN(temperature)) {
+		tempC=typeOfDegree === 'C' ? temperature : fTempIntoC(temperature);
 		output.innerHTML = 'Temperature in Celsius degrees is '+
-		(tempC=typeOfDegree === 'C' ? temperature : fTempIntoC(temperature))
+		tempC
 		+ '<br><br>' + 'Temperature in Fahrenheit degrees is '+
-		typeOfDegree === 'F' ? temperature : cTempIntoF(temperature) 
+		cTempIntoF(tempC)
 		+ '<br><br>' + checkInfo(tempC) + '<br><br>'+ '***************'  + '<br><br>' + output.innerHTML;
 	} else {
     output.innerHTML = temperature +' is not a number'+ '<br><br>'+ output.innerHTML;
